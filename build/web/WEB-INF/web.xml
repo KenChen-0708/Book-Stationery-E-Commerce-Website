@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    <context-param>
+        <param-name>companyName</param-name>
+        <param-value>Chapter &amp; Craft</param-value>
+    </context-param>
+    <context-param>
+        <param-name>email</param-name>
+        <param-value>support@stationeryhaven.com</param-value>
+    </context-param>
+    
+    
+    <!-- Security Roles -->
+    <security-role>
+        <role-name>MANAGER</role-name>
+    </security-role>
+    <security-role>
+        <role-name>STAFF</role-name>
+    </security-role>
+    <security-role>
+        <role-name>CUSTOMER</role-name>
+    </security-role>
+    
+    
+    <!-- Security Constraints -->
+
+    <!-- Manager can only access /Assignment/manager/* -->
+    <security-constraint>
+        <display-name>Manager Pages</display-name>
+        <web-resource-collection>
+            <web-resource-name>Manager Area</web-resource-name>
+            <url-pattern>/Assignment/manager/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>MANAGER</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Staff can only access /Assignment/staff/* -->
+    <security-constraint>
+        <display-name>Staff Pages</display-name>
+        <web-resource-collection>
+            <web-resource-name>Staff Area</web-resource-name>
+            <url-pattern>/Assignment/staff/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>STAFF</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <!-- Form-based login -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/Assignment/login.jsp</form-login-page>
+            <form-error-page>/Assignment/loginError.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    
+    <servlet>
+        <servlet-name>WishlistServlet</servlet-name>
+        <servlet-class>servlet.WishlistServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderStatusServlet</servlet-name>
+        <url-pattern>/OrderStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WishlistServlet</servlet-name>
+        <url-pattern>/WishlistServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>loginServlet</servlet-name>
+        <servlet-class>servlet.loginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserDataServlet</servlet-name>
+        <servlet-class>servlet.UserDataServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>servlet.CartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>servlet.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductServlet</servlet-name>
+        <servlet-class>servlet.ProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReportServlet</servlet-name>
+        <servlet-class>servlet.ReportServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProfileServlet</servlet-name>
+        <servlet-class>servlet.EditProfileServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CartCountServlet</servlet-name>
+        <servlet-class>servlet.CartCountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderStatusServlet</servlet-name>
+        <servlet-class>servlet.OrderStatusServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>loginServlet</servlet-name>
+        <url-pattern>/loginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserDataServlet</servlet-name>
+        <url-pattern>/UserDataServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/CartServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/PaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductServlet</servlet-name>
+        <url-pattern>/ProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/ReportServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProfileServlet</servlet-name>
+        <url-pattern>/EditProfileServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartCountServlet</servlet-name>
+        <url-pattern>/CartCountServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
